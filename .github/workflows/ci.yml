@@ -1,0 +1,33 @@
+name: Continuous Integration (CI)
+
+# Executa el workflow en les Pull Requests dirigides a main.
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    # Aquest nom identificarà la comprovació quan protegim main.
+    name: Install Dependencies and Run Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      # Descarrega el codi del repositori.
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Prepara Node.js i activa la memòria cau de npm.
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # Instal·la les versions registrades a package-lock.json.
+      - name: Install dependencies
+        run: npm ci
+
+      # Executa els tests definits a package.json.
+      - name: Execute unit tests
+        run: npm test
