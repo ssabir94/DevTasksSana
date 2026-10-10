@@ -1,0 +1,15 @@
+# Versió del format de configuració de Dependabot.
+version: 2
+
+updates:
+  # Comprova les dependències npm de package.json i package-lock.json.
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+
+  # Comprova les versions de les accions dels workflows.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
