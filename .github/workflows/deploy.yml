@@ -27,7 +27,7 @@ jobs:
     steps:
       # Step 1: Descarrega el codi de la branca main
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       # Step 2: Configura l'entorn de Pages
       - name: Setup Pages
