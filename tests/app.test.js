@@ -4,7 +4,7 @@ import {
   isValidTask,
   filterTasks,
   getTaskStats
-} from "../js/app.js";
+} from "../js/taskManager.js";
 
 describe("isValidTask", () => {
   it("accepta una tasca amb text", () => {
@@ -18,6 +18,11 @@ describe("isValidTask", () => {
   it("rebutja una tasca formada només per espais", () => {
     expect(isValidTask("   ")).toBe(false);
   });
+
+  // Comprovem que un número no s'accepta com a text d'una tasca.
+  it("rebutja un valor que no és una cadena", () => {
+    expect(isValidTask(123)).toBe(false);
+  });
 });
 
 describe("createTask", () => {
@@ -27,6 +32,13 @@ describe("createTask", () => {
     expect(task.text).toBe("Fer els tests");
     expect(task.completed).toBe(false);
     expect(task.id).toBeDefined();
+  });
+
+  // El text de la tasca s'ha de guardar sense espais als extrems.
+  it("elimina els espais al principi i al final del text", () => {
+    const task = createTask("   Preparar el projecte   ");
+
+    expect(task.text).toBe("Preparar el projecte");
   });
 });
 
@@ -47,6 +59,14 @@ describe("filterTasks", () => {
   it("retorna només les tasques completades", () => {
     expect(filterTasks(tasks, "completed")).toHaveLength(1);
   });
+
+  // Comprovem el contingut del resultat:
+  // només ha de retornar la tasca pendent.
+  it("exclou les tasques completades del filtre de pendents", () => {
+    expect(filterTasks(tasks, "pending")).toEqual([
+      { id: 1, text: "Tasca pendent", completed: false }
+    ]);
+  });
 });
 
 describe("getTaskStats", () => {
@@ -61,6 +81,15 @@ describe("getTaskStats", () => {
       total: 3,
       pending: 2,
       completed: 1
+    });
+  });
+
+  // Sense tasques, tots els comptadors han de ser zero.
+  it("retorna estadístiques a zero quan no hi ha tasques", () => {
+    expect(getTaskStats([])).toEqual({
+      total: 0,
+      pending: 0,
+      completed: 0
     });
   });
 });
