@@ -19,7 +19,7 @@ jobs:
 
       # Prepara Node.js i activa la memòria cau de npm.
       - name: Setup Node.js environment
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: '20'
           cache: 'npm'
