@@ -31,7 +31,7 @@ jobs:
 
       # Step 2: Configura l'entorn de Pages
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v6
 
       # Step 3: Empaqueta i puja els fitxers estatics (.html, .css, .js) com a artefacte
       - name: Upload artifact
