@@ -8,7 +8,8 @@ export function createTask(text) {
     return {
         id: Date.now(),
         text: text.trim(),
-        completed: false
+        // completed: false
+        completed: true // Error deliberat per comprovar la CI.
     };
 }
 
