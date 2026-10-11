@@ -1,5 +1,10 @@
 # DevTasksSana
 
+## Enllaços
+
+- [Aplicació publicada](https://ssabir94.github.io/DevTasksSana/)
+- [Dossier d’evidències](evidencies.pdf)
+
 ## Descripció
 
 DevTasks és una aplicació web per gestionar tasques, feta amb HTML, CSS i JavaScript.
