@@ -3,7 +3,8 @@ import {
   createTask,
   isValidTask,
   filterTasks,
-  getTaskStats
+  getTaskStats,
+  clearCompletedTasks
 } from "../js/taskManager.js";
 
 describe("isValidTask", () => {
@@ -91,5 +92,35 @@ describe("getTaskStats", () => {
       pending: 0,
       completed: 0
     });
+  });
+});
+
+describe("clearCompletedTasks", () => {
+  it("elimina les tasques completades i conserva les pendents", () => {
+    const tasks = [
+      { id: 1, text: "Tasca pendent 1", completed: false },
+      { id: 2, text: "Tasca completada", completed: true },
+      { id: 3, text: "Tasca pendent 2", completed: false }
+    ];
+
+    expect(clearCompletedTasks(tasks)).toEqual([
+      { id: 1, text: "Tasca pendent 1", completed: false },
+      { id: 3, text: "Tasca pendent 2", completed: false }
+    ]);
+  });
+
+  it("retorna una còpia del array sense modificar l'original", () => {
+    const tasks = [
+      { id: 1, text: "Tasca pendent", completed: false },
+      { id: 2, text: "Tasca completada", completed: true }
+    ];
+
+    const result = clearCompletedTasks(tasks);
+
+    expect(result).toEqual([
+      { id: 1, text: "Tasca pendent", completed: false }
+    ]);
+    expect(tasks).toHaveLength(2);
+    expect(tasks[1].completed).toBe(true);
   });
 });

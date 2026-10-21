@@ -43,3 +43,8 @@ export function getTaskStats(tasks) {
 
     return { total, pending, completed };
 }
+
+// Retorna un nou array sense les tasques completades.
+export function clearCompletedTasks(tasks) {
+    return tasks.filter(task => !task.completed);
+}
