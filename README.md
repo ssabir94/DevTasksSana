@@ -3,6 +3,10 @@
 ## Enllaços
 
 - [Aplicació publicada](https://ssabir94.github.io/DevTasksSana/)
+
+- [Dossier d’evidències — Entrega 5](M0616_PROJ1_ENTREGA5%20-SanaSabir.pdf)
+
+
 - [Dossier d’evidències](evidencies.pdf)
 
 ## Descripció
@@ -39,12 +43,13 @@ A PowerShell, si npm.ps1 està bloquejat:
 npm.cmd test
 ```
 
-Hi ha 12 tests amb Vitest que comproven aquestes funcions:
+Hi ha 14 tests amb Vitest que comproven aquestes funcions:
 
 - `isValidTask`: valida el text d'una tasca.
 - `createTask`: crea una tasca pendent i elimina els espais del principi i del final del text.
 - `filterTasks`: filtra les tasques segons el seu estat.
 - `getTaskStats`: calcula el total de tasques, les pendents i les completades.
+- `clearCompletedTasks`: retorna un array nou sense les tasques completades.
 
 ## GitHub Actions
 
@@ -76,6 +81,14 @@ Les dependències npm es declaren a `package.json`. El fitxer `package-lock.json
 Dependabot està configurat a `.github/dependabot.yml` per comprovar setmanalment les dependències npm i les accions dels workflows.
 
 Quan troba actualitzacions, proposa els canvis mitjançant Pull Requests. Durant la pràctica hem revisat les PR generades i els resultats de la CI. De moment, aquestes PR continuen obertes i les actualitzacions no s'han integrat a `main`.
+
+## Integració amb Copilot
+
+El repositori inclou instruccions de desenvolupament a `.github/copilot-instructions.md` i un template de Pull Requests a `.github/PULL_REQUEST_TEMPLATE.md`.
+
+Hem utilitzat Copilot per generar la funció `clearCompletedTasks` i els seus dos tests unitaris, així com el resum de la PR #14. La revisió del codi s’ha fet amb Copilot Chat a VS Code perquè la revisió web havia arribat al límit de quota.
+
+Els 14 tests han passat localment i a GitHub Actions, i la PR #14 s’ha integrat a `main`.
 
 ## Arquitectura
 
