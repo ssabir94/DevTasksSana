@@ -15,7 +15,7 @@ jobs:
     steps:
       # Descarrega el codi del repositori.
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       # Prepara Node.js i activa la memòria cau de npm.
       - name: Setup Node.js environment
